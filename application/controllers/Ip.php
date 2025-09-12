@@ -10,11 +10,11 @@ class Ip extends CI_Controller
 
     public function v4(){
         #$this->output->set_content_type('application/json')->set_output(json_encode($result));
-        $this->output->set_content_type('text/plain')->set_output($_SERVER['REMOTE_ADDR']);
+        $this->output->set_content_type('text/plain')->set_output($_SERVER['REMOTE_ADDR'] . "\n");
     }
 
     public function v6(){
-        $this->output->set_content_type('text/plain')->set_output($_SERVER['REMOTE_ADDR']);
+        $this->output->set_content_type('text/plain')->set_output($_SERVER['REMOTE_ADDR'] . "\n");
     }
 
 }
