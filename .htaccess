@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Wenn Datei oder Verzeichnis existiert → nichts tun
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Alles an index.php weiterleiten
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>

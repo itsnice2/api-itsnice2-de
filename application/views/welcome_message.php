@@ -21,7 +21,8 @@ $this->load->helper('url');
     <div class="api-item">
         <h3>Deine IP anzeigen</h3>
         <hr>
-        <a href="<?php echo base_url("index.php/ip"); ?>">IP anzeigen</a>
+        <p>Deine IP: <label class="ip-anzeigen"><?php echo $_SERVER['REMOTE_ADDR'] ?></label></p>
+        <a href="<?php echo base_url("ip"); ?>">URL ausprobieren</a>
     </div>
 
 </div>
