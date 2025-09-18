@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $hetzner = 'https://api.itsnice2.de';
 $nb24 = 'http://ubuntu-dev/eduard_a/github/api-itsnice2-de/';
-$config['base_url'] = $hetzner;
+$home = 'http://localhost/api-itsnice2-de';
+$config['base_url'] = $home;
 
     /*
     |--------------------------------------------------------------------------

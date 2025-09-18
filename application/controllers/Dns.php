@@ -10,33 +10,42 @@ class Dns extends CI_Controller
     private $PW     = "LN2AthJtKVEuGrh3";
 
 
+
     public function index(){
         $this->output->set_content_type('text/plain')->set_output("¯\_(ツ)_/¯");
+    }
+
+    private function set_database(){
+        $db['testdb_itsnice2'] = array(
+            'dsn'	        => '',
+            'hostname'      => 'hk9p.your-database.de',
+            'username'      => 'itsnice24u_r',
+            'password'      => 'LN2AthJtKVEuGrh3',
+            'database'      => 'testdb_itsnice2',
+            'dbdriver'      => 'mysqli',
+            'dbprefix'      => '',
+            'pconnect'      => FALSE,
+            'db_debug'      => (ENVIRONMENT !== 'production'),
+            'cache_on'      => FALSE,
+            'cachedir'      => '',
+            'char_set'      => 'utf8',
+            'dbcollat'      => 'utf8_general_ci',
+            'swap_pre'      => '',
+            'encrypt'       => FALSE,
+            'compress'      => FALSE,
+            'stricton'      => FALSE,
+            'failover'      => array(),
+            'save_queries'  => TRUE
+        );
+
+        return $db;
     }
 
     public function authentication(){
 
         if($auth = $this->input->get_request_header('Authorization')){
-            $config['dsn']      = '';
-            $config['hostname'] = $this->HOST;
-            $config['username'] = $this->USER;
-            $config['password'] = $this->PW;
-            $config['database'] = $this->DB;
-            $config['dbdriver'] = 'mysqli';
-            $config['dbprefix'] = '';
-            $config['pconnect'] = FALSE;
-            $config['db_debug'] = (ENVIRONMENT !== 'production');
-            $config['cache_on'] = FALSE;
-            $config['char_set'] = 'utf8';
-            $config['dbcollat'] = 'utf8_general_ci';
-            $config['swap_pre'] = '';
-            $config['encrypt']  = FALSE;
-            $config['compress'] = FALSE;
-            $config['stricton'] = FALSE;
-            $config['failover'] = array();
-            $config['save_queries'] = TRUE;
 
-            $this->db = $this->load->database($config, TRUE);
+            $this->db = $this->load->database($this->set_database(), TRUE);
 
             $result = $this->db->query("SELECT value FROM `api_settings_itsnice2` WHERE name = 'hetzner_dns_api_token'");
             $api_token = $result->row()->value;
