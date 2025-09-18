@@ -39,11 +39,12 @@ class Ip extends CI_Controller
 
         $this->db = $this->load->database($config, TRUE);
 
-        $result = $this->db->query("SELECT value FROM `homelab_config` WHERE name = 'public_ip'");
+        $result = $this->db->query("SELECT `value`, `last_update` FROM `homelab_config` WHERE `name` = 'public_ip'");
         $public_ip = $result->row()->value;
+        $time = $result->row()->last_update;
 
 
-        $this->output->set_status_header(200)->set_content_type("text/plain")->set_output($public_ip);
+        $this->output->set_status_header(200)->set_content_type("text/plain")->set_output("Public IP:\t" . $public_ip . "\nLast Update:\t" . $time . "\n");
     }
 
 }
